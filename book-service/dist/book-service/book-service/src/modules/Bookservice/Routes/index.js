@@ -15,6 +15,7 @@ class BookRoute {
     initializeRoutes() {
         this.router.get(`${this.path}/:id`, this.book.getBook);
         this.router.get(`${this.path}`, this.book.getAllBook);
+        this.router.get(`${this.path}/:id/user`, this.book.getUserBook);
         this.router.post(`${this.path}`, (0, validation_middleware_1.ValidationMiddleware)(book_dto_1.CreateBookDto), this.book.createBook);
     }
 }

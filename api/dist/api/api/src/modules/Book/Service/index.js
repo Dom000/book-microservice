@@ -21,8 +21,16 @@ let BookService = class BookService {
     }
     async getBook(id) {
         try {
-            console.log(this.bookServiceRoutes.GET_BOOK);
             const { data: res } = await axios_1.default.get(this.bookServiceRoutes.GET_BOOK + `/${id}`);
+            return res;
+        }
+        catch (error) {
+            throw new HttpException_1.HttpException(500, `${error.message}`);
+        }
+    }
+    async getUserBook(id) {
+        try {
+            const { data: res } = await axios_1.default.get(this.bookServiceRoutes.GET_BOOK + `/${id}/user`);
             return res;
         }
         catch (error) {

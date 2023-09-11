@@ -32,6 +32,15 @@ class BookController {
         }
         catch (error) { }
     }
+    async getUserBook(req, res) {
+        const bookService = typedi_1.default.get(Service_1.default);
+        try {
+            const { id } = req.params;
+            const response = await bookService.getUserBooks(+id);
+            res.json(response);
+        }
+        catch (error) { }
+    }
 }
 exports.BookController = BookController;
 //# sourceMappingURL=index.js.map

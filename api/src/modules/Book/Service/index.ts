@@ -25,7 +25,6 @@ export default class BookService {
 
   async getBook(id: string) {
     try {
-      console.log(this.bookServiceRoutes.GET_BOOK);
 
       const { data: res } = await axios.get(this.bookServiceRoutes.GET_BOOK + `/${id}`);
       return res;
@@ -35,7 +34,6 @@ export default class BookService {
   }
   async getUserBook(id: string) {
     try {
-      console.log(this.bookServiceRoutes.GET_BOOK);
 
       const { data: res } = await axios.get(this.bookServiceRoutes.GET_BOOK + `/${id}/user`);
       return res;

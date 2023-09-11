@@ -76,6 +76,33 @@ let BookService = class BookService {
             throw new HttpException_1.HttpException(500, "An error occurred during login");
         }
     }
+    async getUserBooks(id) {
+        try {
+            const books = await this.prisma.book.findMany({
+                where: {
+                    authorId: id
+                }
+            });
+            if (!books) {
+                return {
+                    status_code: 200,
+                    status: true,
+                    message: "create your first book",
+                    data: []
+                };
+            }
+            return {
+                status_code: 200,
+                status: true,
+                message: "success",
+                data: books,
+            };
+        }
+        catch (error) {
+            console.error(`error: ${error.message}`);
+            throw new HttpException_1.HttpException(500, "An error occurred during login");
+        }
+    }
 };
 BookService = tslib_1.__decorate([
     (0, typedi_1.Service)()

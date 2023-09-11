@@ -38,4 +38,17 @@ export default class BookService {
             description: string;
         }[];
     }>;
+    getUserBooks(id: number): Promise<{
+        status_code: number;
+        status: boolean;
+        message: string;
+        data: {
+            id: number;
+            title: string;
+            author: string;
+            prices: number;
+            authorId: number;
+            description: string;
+        }[];
+    }>;
 }

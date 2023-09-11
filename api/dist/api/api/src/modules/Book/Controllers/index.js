@@ -23,6 +23,15 @@ class BookController {
         }
         catch (error) { }
     }
+    async getUserBook(req, res) {
+        const bookService = typedi_1.default.get(Service_1.default);
+        try {
+            const { id } = req.params;
+            const response = await bookService.getUserBook(id);
+            res.json(response);
+        }
+        catch (error) { }
+    }
     async getAllBook(req, res) {
         const bookService = typedi_1.default.get(Service_1.default);
         try {

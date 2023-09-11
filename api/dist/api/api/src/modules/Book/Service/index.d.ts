@@ -5,5 +5,6 @@ export default class BookService {
     bookServiceRoutes: BOOK_SERVICE_ROUTES;
     createBook(data: CreateBookDto): Promise<any>;
     getBook(id: string): Promise<any>;
+    getUserBook(id: string): Promise<any>;
     getAllBook(): Promise<any>;
 }

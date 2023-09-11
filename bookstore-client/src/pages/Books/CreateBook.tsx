@@ -1,7 +1,11 @@
 import React from "react";
-
-const CreateBook:React.FC = () => {
-  return <div>Cretae</div>;
+import PublishForm from "../../../components/PublishForm";
+const CreateBook: React.FC = () => {
+  return (
+    <div className="">
+      <PublishForm />
+    </div>
+  );
 };
 
 export default CreateBook;

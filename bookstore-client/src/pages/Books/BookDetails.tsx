@@ -1,7 +1,7 @@
 import React from "react";
 
-function BookDetails() {
+const BookDetails: React.FC = () => {
   return <div>BookDetails</div>;
-}
+};
 
 export default BookDetails;

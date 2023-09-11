@@ -1,6 +1,6 @@
 import React from "react";
 
-const CreateBook = () => {
+const CreateBook:React.FC = () => {
   return <div>Cretae</div>;
 };
 

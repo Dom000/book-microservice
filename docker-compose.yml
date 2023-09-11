@@ -1,0 +1,88 @@
+version: "3"
+services:
+
+  react-frontend:
+    build:
+      context: ./
+      dockerfile: ./bookstore-client/Dockerfile
+    env_file:
+      - .env
+    depends_on:
+      - api
+      - book-service
+      - user-service
+    ports:
+      - 8000:8000
+    volumes:
+      - .:/usr/src/app # any change to base folder should be reflected
+      - /usr/src/app/node_modules
+    command: npm run start:client # overrides CMD from dockerfile
+
+
+  book-service:
+    build:
+      context: ./
+      dockerfile: ./book-service/Dockerfile
+    env_file:
+      - .env
+    # depends_on:
+    #   - postgres
+    ports:
+      - 5010:5010
+    volumes:
+      - .:/usr/src/app # any change to base folder should be reflected
+      - /usr/src/app/node_modules
+    command: npm run start:book-service # overrides CMD from dockerfile
+
+  user-service:
+    build:
+      context: ./
+      dockerfile: ./user-service/Dockerfile
+    env_file:
+      - .env
+    # depends_on:
+    #   - postgres
+    ports:
+      - 5020:5020
+    volumes:
+      - .:/usr/src/app # any change to base folder should be reflected
+      - /usr/src/app/node_modules
+    command: npm run start:user-service # overrides CMD from dockerfile
+
+  api:
+    build:
+      context: ./
+      dockerfile: ./api/Dockerfile
+    ports:
+      - "5000:5000"
+    env_file:
+      - .env
+    depends_on:
+      - book-service
+      - user-service
+    volumes:
+      - .:/usr/src/app # any change to base folder should be reflected
+      - /usr/src/app/node_modules
+    command: npm run start:api
+
+  # postgres:
+  #   container_name: postgres_db
+  #   image: postgres
+  #   restart: always
+  #   env_file:
+  #     - .env
+  #   ports:
+  #     - "5432:5432"
+  #   volumes:
+  #     - ./db/data:/var/lib/postgresql/data
+
+  postgres_admin:
+    container_name: postgres_admin
+    image: dpage/pgadmin4
+    restart: always
+    # depends_on:
+    #   - postgres
+    env_file:
+      - .env
+    ports:
+      - "15432:80"

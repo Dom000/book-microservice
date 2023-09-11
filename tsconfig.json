@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "target": "es2017",
+    "lib": ["es2017", "esnext.asynciterable"],
+    "typeRoots": ["node_modules/@types"],
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": false,
+    "moduleResolution": "node",
+    "module": "commonjs",
+    "pretty": true,
+    "sourceMap": true,
+    "declaration": true,
+    "baseUrl": "./",
+    "paths": {
+      "@shared/*": ["shared/*"]
+    },
+    "allowJs": true,
+    "noEmit": false,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "importHelpers": true,
+
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true
+  },
+
+  "lib": ["es2015"],
+  "include": ["src/**/*.ts", "src/**/*.json", ".env", "shared/**/*.ts"],
+  "exclude": ["node_modules"]
+}

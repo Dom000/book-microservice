@@ -4,10 +4,27 @@ import { PiUserBold } from "react-icons/pi";
 import { AiOutlineFileText } from "react-icons/ai";
 import Button from "../../../components/common/Button";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { BOOK_URL } from "../../../constants/endpoints";
+import { useEffect } from "react";
 
 const UserDetails: React.FC = () => {
+  const BOOK_URLS = new BOOK_URL();
   const userDetails = useAuthenticateStore((state) => state);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    async function fetchBook() {
+      const { data } = await axios.get(
+        BOOK_URLS.CREATE_BOOK + `/${userDetails?.userDetails?.id}/user`
+      );
+
+      console.log(data, "here");
+    }
+
+    fetchBook();
+  }, []);
+
   return (
     <div className="md:flex flex-col relative w-full space-x-3 ">
       <div className="md:w-1/5 w-full md:absolute left-0 rounded-md shadow-md h-80 flex-col flex  items-center  p-3">
@@ -27,7 +44,7 @@ const UserDetails: React.FC = () => {
 
           <Button
             onClick={() => {
-              navigate("/createbook")
+              navigate("/createbook");
             }}
             text={"Publish"}
           />

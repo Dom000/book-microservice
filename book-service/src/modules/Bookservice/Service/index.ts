@@ -76,4 +76,31 @@ export default class BookService {
             throw new HttpException(500, "An error occurred during login");
         }
     }
+    async getUserBooks(id: number) {
+        try {
+            const books = await this.prisma.book.findMany({
+                where: {
+                    authorId: id
+                }
+            });
+
+            if (!books) {
+                return {
+                    status_code: 200,
+                    status: true,
+                    message: "create your first book",
+                    data:[]
+                };
+            }  
+            return {
+                status_code: 200,
+                status: true,
+                message: "success",
+                data: books,
+            };
+        } catch (error) {
+            console.error(`error: ${error.message}`);
+            throw new HttpException(500, "An error occurred during login");
+        }
+    }
 }

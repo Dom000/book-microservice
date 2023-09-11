@@ -37,4 +37,14 @@ export class BookController {
       res.json(response);
     } catch (error) { }
   }
+  async getUserBook(req: Request, res: Response) {
+    const bookService = Container.get<BookService>(BookService);
+
+    try {
+      const { id } = req.params;
+
+      const response = await bookService.getUserBooks(+id);
+      res.json(response);
+    } catch (error) { }
+  }
 }

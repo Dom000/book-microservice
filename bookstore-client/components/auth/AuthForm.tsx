@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Button from "../common/Button";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import { BOOK_URL, USER_URL } from "../../constants/endpoints";
-import { useAuthenticateStore, } from "../../features/store/index";
+import { USER_URL } from "../../constants/endpoints";
+import { useAuthenticateStore } from "../../features/store/index";
 import { Link, useNavigate } from "react-router-dom";
 const AuthForm = ({ login }: { login: boolean }) => {
   const USER_URLS = new USER_URL();
@@ -19,7 +19,7 @@ const AuthForm = ({ login }: { login: boolean }) => {
   const registerUser = async (data: any) => {
     try {
       const formdata = {
-        full_name: data["user_name"],
+        user_name: data["user_name"],
         password: data["password"],
         email: data["email"],
       };

@@ -9,6 +9,9 @@ import UserDetails from "./pages/User/UserDeatils";
 import Books from "./pages/Books/index";
 import BooksDetails from "./pages/Books/BookDetails";
 import CreateBook from "./pages/Books/CreateBook";
+import Login from "./pages/Auth/login";
+import Register from "./pages/Auth/Register";
+import { SnackbarProvider } from "notistack";
 
 const router = createBrowserRouter([
   {
@@ -21,7 +24,15 @@ const router = createBrowserRouter([
         element: <User />,
       },
       {
-        path: "/user/:id",
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
+      },
+      {
+        path: "/userDetails",
         element: <UserDetails />,
         // children: [
         //   {
@@ -48,6 +59,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <SnackbarProvider maxSnack={3}>
+      <RouterProvider router={router} />
+    </SnackbarProvider>
   </React.StrictMode>
 );

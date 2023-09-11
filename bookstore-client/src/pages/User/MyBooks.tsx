@@ -6,10 +6,16 @@ import { useNavigate } from "react-router-dom";
 import { BiSolidBookAlt } from "react-icons/bi";
 import axios from "axios";
 import { BOOK_URL } from "../../../constants/endpoints";
-import { useEffect } from "react";
+
+interface booksInt {
+  title: string;
+  description: string;
+  author: string;
+  authorId: number;
+  prices: number;
+}
 
 const Index: React.FC = () => {
-  const BOOK_URLS = new BOOK_URL();
   const userDetails = useAuthenticateStore((state) => state);
   const navigate = useNavigate();
 
@@ -30,17 +36,15 @@ const Index: React.FC = () => {
         </div>
       ) : (
         <div className="w-full grid grid-cols-1 gap-4 md:grid-cols-3">
-          {userDetails.userBooks.map((books, index) => (
+          {userDetails.userBooks.map((books: booksInt, index) => (
             <div
               key={index}
               className="w-full md:max-w-[220px] space-y-3 flex flex-col p-1 items-center"
             >
               <BiSolidBookAlt className="text-[150px] text-gray-500 md:text-[120px]" />
               <div className="w-full items-center text-center ">
-                <p className="font-bold">How to cook</p>
-                <p className="text-xs">
-                  How to cook noodels an d egg in egyptian stytle
-                </p>
+                <p className="font-bold">{books.title}</p>
+                <p className="text-xs">{books.description}</p>
                 <p className="font-bold">₦ {books?.prices}</p>
               </div>
               <Button type="submit" text={"view"} />

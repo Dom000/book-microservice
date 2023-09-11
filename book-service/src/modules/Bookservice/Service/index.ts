@@ -89,9 +89,9 @@ export default class BookService {
                     status_code: 200,
                     status: true,
                     message: "create your first book",
-                    data:[]
+                    data: []
                 };
-            }  
+            }
             return {
                 status_code: 200,
                 status: true,

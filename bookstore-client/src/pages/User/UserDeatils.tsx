@@ -22,7 +22,7 @@ const UserDetails: React.FC = () => {
     }
 
     fetchBook();
-  }, []);
+  }, [userDetails.posted]);
 
   return (
     <div className="md:flex flex-col relative w-full space-x-3 ">

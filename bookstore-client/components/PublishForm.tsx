@@ -5,10 +5,10 @@ import axios from "axios";
 import { BOOK_URL } from "../constants/endpoints";
 import { useAuthenticateStore } from "../features/store/index";
 import { useNavigate } from "react-router-dom";
-import { SnackbarProvider, useSnackbar } from "notistack";
+import { useSnackbar } from "notistack";
 
 const PublishForm = () => {
-  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+  const { enqueueSnackbar } = useSnackbar();
 
   const BOOK_URLS = new BOOK_URL();
   const [loading, setLoading] = useState(false);
@@ -38,6 +38,7 @@ const PublishForm = () => {
         enqueueSnackbar("published", {
           variant: "success",
         });
+        authenticateUser.setPosted(!authenticateUser.posted);
         setLoading(false);
         navigate("/userDetails");
       } else {

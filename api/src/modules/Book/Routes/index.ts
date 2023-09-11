@@ -19,5 +19,6 @@ export class BookRoute implements Routes {
         this.router.post(`${this.path}`, this.book.createBook);
         this.router.get(`${this.path}`, this.book.getAllBook);
         this.router.get(`${this.path}/:id`, this.book.getBook);
+        this.router.get(`${this.path}/:id/user`, this.book.getUserBook);
     }
 }

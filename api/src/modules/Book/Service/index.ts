@@ -33,6 +33,16 @@ export default class BookService {
       throw new HttpException(500, `${error.message}`);
     }
   }
+  async getUserBook(id: string) {
+    try {
+      console.log(this.bookServiceRoutes.GET_BOOK);
+
+      const { data: res } = await axios.get(this.bookServiceRoutes.GET_BOOK + `/${id}/user`);
+      return res;
+    } catch (error) {
+      throw new HttpException(500, `${error.message}`);
+    }
+  }
 
   async getAllBook() {
     try {

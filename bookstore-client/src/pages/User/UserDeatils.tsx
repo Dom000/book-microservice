@@ -19,7 +19,7 @@ const UserDetails: React.FC = () => {
         BOOK_URLS.CREATE_BOOK + `/${userDetails?.userDetails?.id}/user`
       );
 
-      console.log(data, "here");
+      userDetails.setUserBooks(data.data);
     }
 
     fetchBook();

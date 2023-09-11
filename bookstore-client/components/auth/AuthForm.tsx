@@ -5,7 +5,11 @@ import axios from "axios";
 import { USER_URL } from "../../constants/endpoints";
 import { useAuthenticateStore } from "../../features/store/index";
 import { Link, useNavigate } from "react-router-dom";
+import { SnackbarProvider, useSnackbar } from "notistack";
+
 const AuthForm = ({ login }: { login: boolean }) => {
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+
   const USER_URLS = new USER_URL();
   const [loading, setLoading] = useState(false);
   const {
@@ -24,11 +28,25 @@ const AuthForm = ({ login }: { login: boolean }) => {
         email: data["email"],
       };
       const { data: resData } = await axios.post(USER_URLS.REGISTER, formdata);
-      if (resData) {
+
+      console.log(resData);
+
+      if (resData.status) {
+        enqueueSnackbar("succes", {
+          variant: "success",
+        });
         setLoading(false);
         navigate("/login");
+      } else {
+        enqueueSnackbar(`${resData.message}`, {
+          variant: "error",
+        });
+        setLoading(false);
       }
     } catch (err) {
+      enqueueSnackbar(`${err}`, {
+        variant: "error",
+      });
       setLoading(false);
     }
   };
@@ -40,13 +58,26 @@ const AuthForm = ({ login }: { login: boolean }) => {
         password: data["password"],
       };
       const { data: resData } = await axios.post(USER_URLS.LOGIN, formdata);
+      console.log(resData.message);
+
       if (resData?.status) {
         setLoading(false);
+        enqueueSnackbar("login succes", {
+          variant: "success",
+        });
         authenticateUser.setUserDetails(resData?.data);
         authenticateUser.setIsLoggedIn(true);
         navigate(`/userDetails`);
+      } else {
+        enqueueSnackbar(`${resData.message}`, {
+          variant: "error",
+        });
+        setLoading(false);
       }
     } catch (err) {
+      enqueueSnackbar(`${err}`, {
+        variant: "error",
+      });
       setLoading(false);
     }
   };

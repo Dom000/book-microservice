@@ -34,12 +34,6 @@ const router = createBrowserRouter([
       {
         path: "/userDetails",
         element: <UserDetails />,
-        // children: [
-        //   {
-        //     path: "/user/:id",
-        //     element: <User />,
-        //   },
-        // ],
       },
       {
         path: "/books",

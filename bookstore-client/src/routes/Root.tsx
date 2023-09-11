@@ -19,7 +19,7 @@ export default function Root() {
     <>
       {isLoggedIn.isLoggedIn && <Header />}
 
-      <div id="detail" className=" mt-10 md:mt-24">
+      <div id="detail" className=" mt-16 md:mt-24">
         <Outlet />
       </div>
     </>

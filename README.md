@@ -296,6 +296,9 @@ Note ** Each services has there own port check the .env.example file
 
 base url is loocalhost:port/api/v1
 
+## if you are running on docker set base url to 0.0.0.0 instead of localhost
+base url is 0.0.0.0:port/api/v1
+
 
 api service runs on port 5000
 

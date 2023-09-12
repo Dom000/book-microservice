@@ -10,6 +10,11 @@
     "start:user-service": "cd user-service && npm start dev",
     "start:client": "cd bookstore-client && npm run dev",
     "start:api": "cd api && npm start dev",
+    "install:book-client": "cd bookstore-client && npm install",
+    "install:user-service": "cd user-service && npm install",
+    "install:book-service": "cd book-service && npm install",
+    "install:api": "cd api && npm install",
+    "install:all": "concurrently \"npm install\" \"npm run install:book-client\" \"npm run install:user-service\" \"npm run install:book-service\" \"npm run install:api\"",
     "type": "module"
   },
   "keywords": [],

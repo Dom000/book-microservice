@@ -33,7 +33,7 @@ const Index: React.FC = () => {
       {allbooks.length < 1 ? (
         <div className=" flex flex-col space-y-3 items-center">
           <AiOutlineFileText className="text-[50px] text-gray-400" />
-          <p>No book has been published any book</p>
+          <p>No book has been published yet</p>
         </div>
       ) : (
         <div className="w-full grid grid-cols-1 gap-4 md:grid-cols-4 p-5">

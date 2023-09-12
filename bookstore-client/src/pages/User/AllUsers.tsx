@@ -29,7 +29,7 @@ const AllUsers: React.FC = () => {
       {allusers.length < 1 ? (
         <div className=" flex flex-col space-y-3 items-center">
           <AiOutlineFileText className="text-[50px] text-gray-400" />
-          <p>No book has been published any book</p>
+          <p>No User to display</p>
         </div>
       ) : (
         <div className="w-full grid grid-cols-1 gap-3  md:grid-cols-4 p-5">

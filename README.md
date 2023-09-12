@@ -276,11 +276,12 @@ npm run dev
 Here's a test postgresql database you can use for test running it
 
 ```bash
-DB_HOST=dpg-cjuvlvnhdsdc7380oju0-a.oregon-postgres.render.com
-POSTGRES_PASSWORD=sLYGzJCt2nAWUh3dKv3SkjfRCTJFtkLL
-POSTGRES_USER=dom000
-POSTGRES_DB=microservicedb
-POSTGRES_URI=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${DB_HOST}/${POSTGRES_DB}?schema=public
+DB_HOST=containers-us-west-126.railway.app
+DB_PORT=7238
+POSTGRES_PASSWORD=16QfFjlYMzCLzF2CTVLQ
+POSTGRES_USER=postgres
+POSTGRES_DB=railway
+POSTGRES_URI=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${DB_HOST}:${DB_PORT}/${POSTGRES_DB}?schema=user_service
 
 PGADMIN_DEFAULT_EMAIL=Dom000@gmail.com
 PGADMIN_DEFAULT_PASSWORD=Dom000
@@ -295,6 +296,9 @@ Note** all the services are using the same database, differentiated with a schem
 Note ** Each services has there own port check the .env.example file 
 
 base url is loocalhost:port/api/v1
+
+## if you are running on docker set base url to 0.0.0.0 instead of localhost
+base url is 0.0.0.0:port/api/v1
 
 
 api service runs on port 5000

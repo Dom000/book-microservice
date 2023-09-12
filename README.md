@@ -16,7 +16,7 @@ The system is composed of three main components: the `client`, the `api`, the `b
 
 - **_<span style="color:#297deb"> Client </span>_**: The client is created using [React](https://react.dev/) that is responsible for sending the requests to the server and receiving the responses from it. The client contains a web interface for the document visualization. As for the UI, it uses Vite, which is a React front-end tooling. The communication between the client and the services is made using TCP or axios which is a bare transporter, which is a library that enables making of request to a remote server or service.
 
-- **_<span style="color:#297deb"> Server </span>_**: The server is made in Express in which is the most complex element of the system, that is responsible for holding a list of users, and there books . Futhermore, the server will send a response which updates the client web interface. Just like in the client, the server uses (obviously) [Socket.IO](https://socket.io/docs/v4/index.html) to communicate with the client. The communication between the server and the database is made using [Prisma](https://www.prisma.io/docs), which is an Object Relation Mapping (ORM) library.
+- **_<span style="color:#297deb"> Server </span>_**: The server is made in Express in which is the most complex element of the system, that is responsible for holding a list of users, and there books . Futhermore, the server will send a response which updates the client web interface. Just like in the client, the server uses HTTP to communicate with the client. The communication between the server and the database is made using [Prisma](https://www.prisma.io/docs), which is an Object Relation Mapping (ORM) library.
 - **_<span style="color:#297deb"> Database </span>_**: Lastly, the database used is a Postgresql db, that is an `SQL` database who is responsible for storing the document which will be in the format of a [JSON](https://json-schema.org/learn/getting-started-step-by-step.html), as follows:
   json
   {
@@ -34,10 +34,10 @@ The backend can be spawn up in a docker container, which all instructions has be
 
 ## Installation
 
-To spin up all the services use this cmd
+To spin up all the services use this cmd,the first command will install all the required packages for each services and cleint as well, second one will start them up
 
 ```bash
-$ npm install
+$ npm run install:all
 $ npm run start:dev
 ```
 
@@ -45,7 +45,15 @@ you can also start individual services if thats a use case
 
 ````bash
 
-$ npm install for each services
+$ npm install for each services from the root folder [bookstore_microservice_express-app>] or you can go into each service base folder and run npm install
+
+ "install:book-client": "cd bookstore-client && npm install",
+ "install:user-service": "cd user-service && npm install",
+ "install:book-service": "cd book-service && npm install",
+  "install:api": "cd api && npm install",
+
+$ npm run each services from the root folder [bookstore_microservice_express-app>] or you can go into each service base folder and run npm start dev , Note for the client use npm run dev
+
 
     "npm run start:book-service",
     "npm run start:user-service": ,

@@ -12,8 +12,8 @@ services:
     ports:
       - 8000:8000
     volumes:
-      - .:/usr/src/app # any change to base folder should be reflected
-      - /usr/src/app/node_modules
+      - .:/app # any change to base folder should be reflected
+      - /app/node_modules
     command: npm run start:client # overrides CMD from dockerfile
 
 

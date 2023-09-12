@@ -1,7 +1,6 @@
 import Container, { Service } from "typedi";
 import { CreateBookDto } from "../Dto/book.dto";
 import { HttpException } from "../../../../../shared/utils/HttpException";
-import * as argon from "argon2";
 import { PrismaClient } from "@prisma/client";
 
 @Service()

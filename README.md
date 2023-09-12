@@ -105,7 +105,6 @@ Note its recommended to use the api service for calling the microservices, its a
   "message": "user created"
 }
 
-## Refresh User Token
 
 ### Request
 
